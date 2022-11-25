@@ -25,10 +25,20 @@ public class CampoTreinamentoPage {
 		dsl.escreve("elementosForm:sugestoes", sugestao);
 
 	}
+	
+	public void textAreaDoPopUp(String texto) {
+		dsl.escreve(By.tagName("textarea"), texto);
+
+	}
 
 	/************ escrever ***********/
 
 	/************ clica ***********/
+
+	public void botaoPopup() {
+		dsl.clicarBotao("buttonPopUpEasy");
+
+	}
 
 	public void sexoMasculino() {
 		dsl.clicarRadio(("elementosForm:sexo:0"));
@@ -63,7 +73,7 @@ public class CampoTreinamentoPage {
 	/************ clica ***********/
 
 	/************ combo ***********/
-	
+
 	public void escolaridade(String... valores) {
 		for (String valor : valores)
 			dsl.selecionarCombo("elementosForm:escolaridade", valor);
@@ -78,21 +88,14 @@ public class CampoTreinamentoPage {
 
 	/************ combo ***********/
 
+	/************ obter ***********/
 	public String obterValueCampoNome() {
 		return dsl.obterValorCampo("elementosForm:nome");
-	}
-
-	public boolean retornarRadioMasculino() {
-		return dsl.isRadioMarcado("elementosForm:sexo:0");
 	}
 
 	public String obterSugestoesFeitas() {
 		return dsl.obterValorCampo("elementosForm:sugestoes");
 
-	}
-
-	public boolean retornarRadioCarne() {
-		return dsl.isRadioMarcado("elementosForm:comidaFavorita:0");
 	}
 
 	public String obterResultadoCadstro() {
@@ -122,5 +125,42 @@ public class CampoTreinamentoPage {
 	public String obterEsporteCadastro() {
 		return dsl.obterTexto(By.id("descEsportes"));
 	}
+
+	/************ obter ***********/
+
+	/************ boleanos ***********/
+
+	public boolean retornarRadioMasculino() {
+		return dsl.isRadioMarcado("elementosForm:sexo:0");
+	}
+
+	public boolean retornarRadioCarne() {
+		return dsl.isRadioMarcado("elementosForm:comidaFavorita:0");
+	}
+
+	/************ boleanos ***********/
+
+	/************ frames ***********/
+
+	public void mudarFrame() {
+		dsl.mudarFocoParaFrameEspecifico("frame1");
+
+	}
+
+	public void botaoFrame() {
+		dsl.clicarBotao("frameButton");
+
+	}
+	/************ janelas ***********/
+
+	public void mudarfocoJanelaPopUp() {
+		dsl.mudarFocoJanelaEspecifica("Popup");
+
+	}
+
+	public void mudarfocoJanelaPopUpDoMal() {
+		dsl.clicarBotao("buttonPopUpHard");
+	}
+	/************ janelas ***********/
 
 }
