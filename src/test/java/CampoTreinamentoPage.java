@@ -25,7 +25,7 @@ public class CampoTreinamentoPage {
 		dsl.escreve("elementosForm:sugestoes", sugestao);
 
 	}
-	
+
 	public void textAreaDoPopUp(String texto) {
 		dsl.escreve(By.tagName("textarea"), texto);
 
@@ -67,6 +67,16 @@ public class CampoTreinamentoPage {
 
 	public void botaoCliqueMe() {
 		dsl.clicarBotao("buttonSimple");
+
+	}
+
+	public void botaoConfirm() {
+		dsl.clicarBotao("confirm");
+
+	}
+
+	public void botaoPrompt() {
+		dsl.clicarBotao("prompt");
 
 	}
 
@@ -151,6 +161,7 @@ public class CampoTreinamentoPage {
 		dsl.clicarBotao("frameButton");
 
 	}
+
 	/************ janelas ***********/
 
 	public void mudarfocoJanelaPopUp() {
@@ -161,6 +172,11 @@ public class CampoTreinamentoPage {
 	public void mudarfocoJanelaPopUpDoMal() {
 		dsl.clicarBotao("buttonPopUpHard");
 	}
+
 	/************ janelas ***********/
 
+	public void botaoAlert() {
+		dsl.clicarBotao("alert");
+
+	}
 }

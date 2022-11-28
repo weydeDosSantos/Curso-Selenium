@@ -29,20 +29,20 @@ public class TesteCampoTreinamento {
 
 	@After
 	public void quitar() {
-		driver.quit();
+		 driver.quit();
 	}
 
 	@Test
 	public void testeTextField() {
-		
+
 		page.nome("teste de escrita");
 		Assert.assertEquals("teste de escrita", page.obterValueCampoNome());
 	}
 
 	@Test
 	public void devoInteragirComTextArea() {
-		page.areaDeSugestoes("teste/nkkk/n/sadsad");
-		Assert.assertEquals("teste/nkkk/n/sadsad", page.obterSugestoesFeitas());
+		page.areaDeSugestoes("teste/nkkk/n/n/sadsad");
+		Assert.assertEquals("teste/nkkk/n/n/sadsad", page.obterSugestoesFeitas());
 	}
 
 	@Test
@@ -67,7 +67,7 @@ public class TesteCampoTreinamento {
 		 * combo.selectByValue("superior");
 		 * combo.selectByVisibleText("2o grau completo");
 		 */
-		dsl.selecionarCombo("elementosForm:escolaridade", "2o grau completo");
+		page.escolaridade("2o grau completo");
 		Assert.assertEquals("2o grau completo", dsl.obterValorCombo("elementosForm:escolaridade"));
 
 	}
@@ -82,7 +82,7 @@ public class TesteCampoTreinamento {
 
 	@Test
 	public void devoVerificarValoresComboMultiplo() {
-		page.esportes("Futebol","Corrida","O que eh esporte?");
+		page.esportes("Futebol", "Corrida", "O que eh esporte?");
 		WebElement element = driver.findElement(By.id("elementosForm:esportes"));
 		Select combo = new Select(element);
 		List<WebElement> allSelectedOptions = combo.getAllSelectedOptions();
@@ -109,5 +109,10 @@ public class TesteCampoTreinamento {
 		Assert.assertEquals("Campo de Treinamento", dsl.obterTexto(By.tagName("h3")));
 		Assert.assertEquals("Cuidado onde clica, muitas armadilhas...",
 				dsl.obterTexto(By.xpath("//span[@class='facilAchar']")));
+	}
+
+	@Test
+	public void deveClicarBotaoTabela() {
+		dsl.ClicarBotaoTabela("Nome", "Maria", "Botao", "elementosForm:tableUsuarios");
 	}
 }
