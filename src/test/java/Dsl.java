@@ -34,6 +34,11 @@ public class Dsl {
 
 	}
 
+	public void clicarRadioby(By by) {
+		driver.findElement(by).click();
+
+	}
+
 	public void clicarBotao(String id) {
 		driver.findElement(By.id(id)).click();
 	}
@@ -76,6 +81,17 @@ public class Dsl {
 		WebElement element = driver.findElement(By.id(id));
 		Select combo = new Select(element);
 		combo.selectByVisibleText(valor);
+	}
+
+	public void selecionarComboby(By by, String valor) {
+		WebElement element = driver.findElement(by);
+		Select combo = new Select(element);
+		combo.selectByVisibleText(valor);
+	}
+	
+	public void selecionarComboPrime(String radical,String valor) {
+		clicarRadioby(By.xpath("//*[@id='"+radical+"_input']/../..//span"));
+		clicarRadioby(By.xpath("//ul[@id='"+radical+"_items']/li[.='"+valor+"']"));
 	}
 
 	public String alertObterTextoEDigitarEAceitar(String num) {
@@ -125,7 +141,7 @@ public class Dsl {
 		driver.close();
 	}
 
-	public void ClicarBotaoTabela(String colunaBusca, String valor, String colunaBotao,String idTabela) {
+	public void ClicarBotaoTabela(String colunaBusca, String valor, String colunaBotao, String idTabela) {
 		// PROCURAR COLUNA DO REGISTRO
 		WebElement tabela = driver.findElement(By.xpath("//table[@id='elementosForm:tableUsuarios']"));
 		int idColuna = obterIndiceColuna(colunaBusca, tabela);
@@ -134,7 +150,7 @@ public class Dsl {
 		// PROCURAR COLUNA DO BOTAO
 		int idColunaBotao = obterIndiceColuna(colunaBotao, tabela);
 		// CLICAR NO BOTAO DA CELULA ENCONTRADA
-		WebElement celula = tabela.findElement(By.xpath(".//tr["+idLinha+"]/td["+idColunaBotao+"]"));
+		WebElement celula = tabela.findElement(By.xpath(".//tr[" + idLinha + "]/td[" + idColunaBotao + "]"));
 		celula.findElement(By.xpath(".//input")).click();
 	}
 

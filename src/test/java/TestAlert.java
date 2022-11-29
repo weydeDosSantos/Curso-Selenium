@@ -24,7 +24,7 @@ public class TestAlert {
 
 	@After
 	public void quitar() {
-		//driver.quit();
+		driver.quit();
 	}
 
 	@Test

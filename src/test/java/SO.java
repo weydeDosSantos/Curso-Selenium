@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,19 +15,17 @@ public class SO {
 
 	private WebDriver driver = new ChromeDriver();
 
-	
 	@Before
 	public void inicializa() {
-		driver.manage().window().maximize();
+		driver.manage().window().setSize(new Dimension(1200, 765));
 		driver.get("https://www.bb.com.br/site");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 
 	@After
 	public void quitar() {
-		driver.quit();
+		 driver.quit();
 	}
-	
 	@Test
 	public void test() throws InterruptedException {
         driver.findElement(By.xpath("//div[@class='col-16 col-md-4 buttons']/button[.='Permitir todos']")).click();
