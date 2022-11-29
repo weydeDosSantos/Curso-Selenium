@@ -26,7 +26,7 @@ public class RegraDeNegocioTest {
 	
 	@After
 	public void quitar() {
-		//driver.quit();
+		driver.quit();
 	}
 
 	@Test
