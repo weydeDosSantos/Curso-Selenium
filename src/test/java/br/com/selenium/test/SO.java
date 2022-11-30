@@ -1,3 +1,4 @@
+package br.com.selenium.test;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.After;

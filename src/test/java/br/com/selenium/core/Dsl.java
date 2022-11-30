@@ -1,3 +1,6 @@
+package br.com.selenium.core;
+import static br.com.selenium.core.DriverFactory.getDriver;
+
 import java.util.List;
 
 import org.openqa.selenium.Alert;
@@ -8,20 +11,15 @@ import org.openqa.selenium.support.ui.Select;
 
 public class Dsl {
 
-	private WebDriver driver;
-
-	public Dsl(WebDriver driver) {
-		this.driver = driver;
-	}
 
 	/********* escreve ***********/
 	public void escreve(String id_campo, String texto) {
-		driver.findElement(By.id(id_campo)).sendKeys(texto);
+		getDriver().findElement(By.id(id_campo)).sendKeys(texto);
 
 	}
 
 	public void escreve(By by, String texto) {
-		driver.findElement(by).sendKeys(texto);
+		getDriver().findElement(by).sendKeys(texto);
 
 	}
 
@@ -30,21 +28,21 @@ public class Dsl {
 	/********* clica ***********/
 
 	public void clicarRadio(String id_radio) {
-		driver.findElement(By.id(id_radio)).click();
+		getDriver().findElement(By.id(id_radio)).click();
 
 	}
 
 	public void clicarRadioby(By by) {
-		driver.findElement(by).click();
+		getDriver().findElement(by).click();
 
 	}
 
 	public void clicarBotao(String id) {
-		driver.findElement(By.id(id)).click();
+		getDriver().findElement(By.id(id)).click();
 	}
 
 	public void clicarLink(String link) {
-		driver.findElement(By.linkText(link)).click();
+		getDriver().findElement(By.linkText(link)).click();
 
 	}
 
@@ -53,18 +51,18 @@ public class Dsl {
 	/********* obtêm ***********/
 
 	public String obterValorCampo(String id_campo) {
-		return driver.findElement(By.id(id_campo)).getAttribute("value");
+		return getDriver().findElement(By.id(id_campo)).getAttribute("value");
 	}
 
 	public String obterValorCombo(String id) {
-		WebElement element = driver.findElement(By.id(id));
+		WebElement element = getDriver().findElement(By.id(id));
 		Select combo = new Select(element);
 		return combo.getFirstSelectedOption().getText();
 
 	}
 
 	public String obterTexto(By by) {
-		return driver.findElement(by).getText();
+		return getDriver().findElement(by).getText();
 	}
 
 	public String obterTexto(String id) {
@@ -74,17 +72,17 @@ public class Dsl {
 	/********* obtêm ***********/
 
 	public boolean isRadioMarcado(String id) {
-		return driver.findElement(By.id(id)).isSelected();
+		return getDriver().findElement(By.id(id)).isSelected();
 	}
 
 	public void selecionarCombo(String id, String valor) {
-		WebElement element = driver.findElement(By.id(id));
+		WebElement element = getDriver().findElement(By.id(id));
 		Select combo = new Select(element);
 		combo.selectByVisibleText(valor);
 	}
 
 	public void selecionarComboby(By by, String valor) {
-		WebElement element = driver.findElement(by);
+		WebElement element = getDriver().findElement(by);
 		Select combo = new Select(element);
 		combo.selectByVisibleText(valor);
 	}
@@ -95,7 +93,7 @@ public class Dsl {
 	}
 
 	public String alertObterTextoEDigitarEAceitar(String num) {
-		Alert alert = driver.switchTo().alert();
+		Alert alert = getDriver().switchTo().alert();
 		String valor = alert.getText();
 		alert.sendKeys(num);
 		alert.accept();
@@ -103,47 +101,47 @@ public class Dsl {
 	}
 
 	public String alertObterTextoEAceita() {
-		Alert alert = driver.switchTo().alert();
+		Alert alert = getDriver().switchTo().alert();
 		String valor = alert.getText();
 		alert.accept();
 		return valor;
 	}
 
 	public String alertObterTextoERecusa() {
-		Alert alert = driver.switchTo().alert();
+		Alert alert = getDriver().switchTo().alert();
 		String valor = alert.getText();
 		alert.dismiss();
 		return valor;
 	}
 
 	public String alertObterTexto() {
-		Alert alert = driver.switchTo().alert();
+		Alert alert = getDriver().switchTo().alert();
 		String valor = alert.getText();
 		return valor;
 	}
 
 	public void mudarFocoParaFrameEspecifico(String frame) {
-		driver.switchTo().frame(frame);
+		getDriver().switchTo().frame(frame);
 
 	}
 
 	public void mudarFocoParaFramePadrao() {
-		driver.switchTo().defaultContent();
+		getDriver().switchTo().defaultContent();
 
 	}
 
 	public void mudarFocoJanelaEspecifica(String id) {
-		driver.switchTo().window(id);
+		getDriver().switchTo().window(id);
 
 	}
 
 	public void fecharJanela() {
-		driver.close();
+		getDriver().close();
 	}
 
 	public void ClicarBotaoTabela(String colunaBusca, String valor, String colunaBotao, String idTabela) {
 		// PROCURAR COLUNA DO REGISTRO
-		WebElement tabela = driver.findElement(By.xpath("//table[@id='elementosForm:tableUsuarios']"));
+		WebElement tabela = getDriver().findElement(By.xpath("//table[@id='elementosForm:tableUsuarios']"));
 		int idColuna = obterIndiceColuna(colunaBusca, tabela);
 		// ENCONTRAR A LINHA DO REGISTRO
 		int idLinha = obterIndiceLinha(valor, tabela, idColuna);

@@ -1,32 +1,31 @@
+package br.com.selenium.test;
+import static br.com.selenium.core.DriverFactory.getDriver;
+import static br.com.selenium.core.DriverFactory.killDriver;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Select;
+
+import br.com.selenium.core.Dsl;
+import br.com.selenium.page.CampoTreinamentoPage;
 
 public class RegraDeNegocioTest {
 
-	private WebDriver driver = new ChromeDriver();
 	private Dsl dsl;
 	private CampoTreinamentoPage page;
 	
 	
 	@Before
 	public void inicializa() {
-		driver.manage().window().setSize(new Dimension(1200, 765));
-		driver.get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
-		dsl = new Dsl(driver);
-		page = new CampoTreinamentoPage(driver);
+		getDriver().get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
+		dsl = new Dsl();
+		page = new CampoTreinamentoPage();
 	}
 	
 	@After
 	public void quitar() {
-		driver.quit();
+		killDriver();
 	}
 
 	@Test

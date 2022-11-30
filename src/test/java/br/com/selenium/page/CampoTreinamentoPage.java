@@ -1,13 +1,13 @@
+package br.com.selenium.page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class CampoTreinamentoPage {
+import br.com.selenium.core.BasePage;
+import br.com.selenium.core.Dsl;
 
-	private Dsl dsl;
+public class CampoTreinamentoPage extends BasePage{
 
-	public CampoTreinamentoPage(WebDriver driver) {
-		dsl = new Dsl(driver);
-	}
+	
 
 	/************ escrever ***********/
 
