@@ -1,4 +1,5 @@
 package br.com.selenium.core;
+
 import static br.com.selenium.core.DriverFactory.getDriver;
 
 import java.util.List;
@@ -11,8 +12,7 @@ import org.openqa.selenium.support.ui.Select;
 
 public class Dsl {
 
-
-	/********* escreve ***********/
+	/********* Escreve ***********/
 	public void escreve(String id_campo, String texto) {
 		getDriver().findElement(By.id(id_campo)).sendKeys(texto);
 
@@ -23,9 +23,9 @@ public class Dsl {
 
 	}
 
-	/********* escreve ***********/
+	/********* Escreve ***********/
 
-	/********* clica ***********/
+	/********* Clica ***********/
 
 	public void clicarRadio(String id_radio) {
 		getDriver().findElement(By.id(id_radio)).click();
@@ -46,9 +46,9 @@ public class Dsl {
 
 	}
 
-	/********* clica ***********/
+	/********* Clica ***********/
 
-	/********* obtêm ***********/
+	/********* Obtêm ***********/
 
 	public String obterValorCampo(String id_campo) {
 		return getDriver().findElement(By.id(id_campo)).getAttribute("value");
@@ -69,12 +69,9 @@ public class Dsl {
 		return obterTexto(By.id(id));
 	}
 
-	/********* obtêm ***********/
+	/********* Obtêm ***********/
 
-	public boolean isRadioMarcado(String id) {
-		return getDriver().findElement(By.id(id)).isSelected();
-	}
-
+	/********* Combo ***********/
 	public void selecionarCombo(String id, String valor) {
 		WebElement element = getDriver().findElement(By.id(id));
 		Select combo = new Select(element);
@@ -86,11 +83,49 @@ public class Dsl {
 		Select combo = new Select(element);
 		combo.selectByVisibleText(valor);
 	}
-	
-	public void selecionarComboPrime(String radical,String valor) {
-		clicarRadioby(By.xpath("//*[@id='"+radical+"_input']/../..//span"));
-		clicarRadioby(By.xpath("//ul[@id='"+radical+"_items']/li[.='"+valor+"']"));
+
+	public void selecionarComboPrime(String radical, String valor) {
+		clicarRadioby(By.xpath("//*[@id='" + radical + "_input']/../..//span"));
+		clicarRadioby(By.xpath("//ul[@id='" + radical + "_items']/li[.='" + valor + "']"));
 	}
+
+	/********* Combo ***********/
+
+	/********* Frame ***********/
+	public void mudarFocoParaFrameEspecifico(String frame) {
+		getDriver().switchTo().frame(frame);
+
+	}
+
+	public void mudarFocoParaFramePadrao() {
+		getDriver().switchTo().defaultContent();
+
+	}
+
+	/********* Frame ***********/
+
+	/********* Janela ***********/
+	public void mudarFocoJanelaEspecifica(String id) {
+		getDriver().switchTo().window(id);
+
+	}
+
+	public void fecharJanela() {
+		getDriver().close();
+	}
+
+	/********* Janela ***********/
+
+	/********* Boleano ***********/
+
+	public boolean isRadioMarcado(String id) {
+		return getDriver().findElement(By.id(id)).isSelected();
+
+	/********* Boleano ***********/
+
+	}
+
+	/********* ObterTexto ***********/
 
 	public String alertObterTextoEDigitarEAceitar(String num) {
 		Alert alert = getDriver().switchTo().alert();
@@ -120,24 +155,7 @@ public class Dsl {
 		return valor;
 	}
 
-	public void mudarFocoParaFrameEspecifico(String frame) {
-		getDriver().switchTo().frame(frame);
-
-	}
-
-	public void mudarFocoParaFramePadrao() {
-		getDriver().switchTo().defaultContent();
-
-	}
-
-	public void mudarFocoJanelaEspecifica(String id) {
-		getDriver().switchTo().window(id);
-
-	}
-
-	public void fecharJanela() {
-		getDriver().close();
-	}
+	/********* ObterTexto ***********/
 
 	public void ClicarBotaoTabela(String colunaBusca, String valor, String colunaBotao, String idTabela) {
 		// PROCURAR COLUNA DO REGISTRO
