@@ -6,9 +6,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.com.selenium.core.DriverFactory;
 import br.com.selenium.core.Dsl;
 import br.com.selenium.page.CampoTreinamentoPage;
+import br.com.selenium.core.DriverFactory;
 
 public class TesteFrameEJanelas {
 

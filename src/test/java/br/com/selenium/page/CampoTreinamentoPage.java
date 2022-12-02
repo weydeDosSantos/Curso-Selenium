@@ -1,9 +1,7 @@
 package br.com.selenium.page;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 import br.com.selenium.core.BasePage;
-import br.com.selenium.core.Dsl;
 
 public class CampoTreinamentoPage extends BasePage{
 
